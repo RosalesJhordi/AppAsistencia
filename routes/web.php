@@ -34,6 +34,8 @@ Route::post('Agregar',[AgregarController::class,'store']);
 
 Route::get('Personal',[PersonalController::class,'index'])->name('Personal');
 
+//Eliminar Personal
+Route::post('Delete',[PersonalController::class,'delete'])->name('Delete');
 
 //Narcar
 Route::post('Marcar',[MarcarController::class,'store'])->name('Marcar');

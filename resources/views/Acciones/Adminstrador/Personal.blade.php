@@ -5,7 +5,13 @@ Personal
 @endsection
 
 @section('contenido')
-<table class="px-5 mt-10 w-full">
+<div class="w-full flex justify-center">
+    @if(session('success'))
+        <p class="bg-green-500 text-white w-1/2 rounded-sm text-sm p-2 text-center">{{ session('success') }}</p>
+    @endif
+</div>
+
+<table class="px-5 mt-5 w-full">
     <thead class="bg-blue-500">
         <tr>
             <th class="border border-white text-white p-2">Nombre</th>
@@ -27,7 +33,7 @@ Personal
                 <td class="border border-white p-2">{{ $p->email }}</td>
                 <td class="border border-white p-2">{{ $p->created_at->diffForHumans() }}</td>
                 <td class="border border-white p-2 text-xl">
-                    <form action="" method="POST" class="flex gap-5 justify-center items-center">
+                    <form action="{{ route('Delete') }}" method="POST" class="flex gap-5 justify-center items-center">
                         @csrf
                         <input type="hidden" name="id" value="{{$p->id}}">
                         <button type="submit"><i class="fa-solid fa-trash text-red-500"></i></button>

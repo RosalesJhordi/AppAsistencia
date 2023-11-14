@@ -55,6 +55,6 @@ navigator.geolocation.getCurrentPosition(function (position) {
     map.setView(userLatlng, 18);
 
     // Inicializar los valores del formulario
-    document.getElementById("longitud").value = userLatlng[0];
-    document.getElementById("latitud").value = userLatlng[1];
+    document.getElementById("longitud").value = userLatlng[1];
+    document.getElementById("latitud").value = userLatlng[0];
 });

@@ -6,3 +6,7 @@
     width: 5px;
     background-color: rgb(184, 180, 180);
 }
+
+.ops{
+    transition: background-color .5s ease, opacity 1s ease;
+}

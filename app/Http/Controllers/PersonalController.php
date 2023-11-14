@@ -11,4 +11,10 @@ class PersonalController extends Controller
         $personal = User::where("email","!=","1428060@senati.pe")->get();
         return view("Acciones.Adminstrador.Personal",compact("personal"));
     }
+    public function delete(){
+        $id = request("id");
+        $user = User::find($id);
+        $user->delete();
+        return back()->with('success', 'Personal eliminado correctamente');
+    }
 }
