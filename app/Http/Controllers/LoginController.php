@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -21,6 +22,9 @@ class LoginController extends Controller
 
 
         return view('Login',compact('resultado'));
+    }
+    public function index(){
+        return view('Home');
     }
     public function login(Request $request){
         $this->validate($request, [
