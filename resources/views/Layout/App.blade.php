@@ -15,8 +15,8 @@
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 </head>
-<body class="flex justify-between">
-    <aside style="width: 15%;" class="h-screen bg-gray-900"> 
+<body class="flex justify-between relative">
+    <aside style="width: 15%;" class="h-screen bg-gray-900 fixed"> 
         <img src="{{asset('img/Logo-modified.png')}}" alt="Logo" class="py-5 w-80">
         
         <div class="flex flex-col text-white mt-20 gap-10 relative" style="height: 80vh;">
@@ -38,7 +38,7 @@
                     Personal
                 </div></a>
             @else
-                <a href=""><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl">
+                <a href="{{route('Home')}}"><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl">
                     <i class="fa-solid fa-calendar"></i>
                     Marcar Asistencia
                 </div></a>
@@ -66,13 +66,13 @@
             </form>
         </div>
     </aside>
-    <main style="width: 85%;">
+    <main style="width: 85%;" class="absolute right-0">
         <h1 class="px-5 py-5 text-xl font-medium flex justify-between">
             @yield('titulo')
             <span>Hola: {{ auth()->user()->name }}</span>
         </h1>
         
-        <div class="w-full h-auto flex gap-5 my-5 px-5">
+        <div class="w-full h-auto flex gap-5 my-5 px-5 pb-5 border-b-2 border-gray-200">
             @if (auth()->user()->email == "1428060@senati.pe")
             <a href="{{route('Personal')}}">
                 <div class="w-80 h-32 bg-green-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgregarController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\MarcarController;
 use App\Http\Controllers\PersonalController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,7 @@ Route::post('Agregar',[AgregarController::class,'store']);
 //Personal
 
 Route::get('Personal',[PersonalController::class,'index'])->name('Personal');
+
+
+//Narcar
+Route::post('Marcar',[MarcarController::class,'store'])->name('Marcar');

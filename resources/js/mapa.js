@@ -32,7 +32,13 @@ navigator.geolocation.getCurrentPosition(function (position) {
 
         // Verificar si esta dentro del rango
         const isInsideCircle = circle.getBounds().contains(latlng);
-        document.getElementById("veri").value = isInsideCircle;
+        if(isInsideCircle){
+            const succ = "Estas en el rango"
+            document.getElementById("veri").value = succ;
+        }else{
+            const error = "No estas en el rango"
+            document.getElementById("veri").value = error;
+        }
     });
 
     // Imagen que saldrá en el pin
