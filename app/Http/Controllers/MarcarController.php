@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Horario;
 use Illuminate\Http\Request;
 
 class MarcarController extends Controller
@@ -16,16 +17,20 @@ class MarcarController extends Controller
             $lati = $request->latitud;
             $long = $request->longitud;
             $user = User::find(auth()->user()->id);
-            $user->update([
-                'latitud' => $lati,
-                'longitud' => $long
-            ]);
+            $hr = Horario::where("user_id", $user->id)->first();
             if($request->veri == "Estas en el rango"){
-                return back()->with('success','Dentro del rango');
+                $user->update([
+                    'latitud' => $lati,
+                    'longitud' => $long
+                ]);
+                $asis = "Asistio";
+                $hr->update([
+                    'estado' => $asis
+                ]);
+                return redirect()->route('Home')->with('success', 'Dentro del rango, Asistencia marcada');
             }else{
-                return back()->with('mensaje','Fuera del rango');
+                return redirect()->route('Home')->with('mensaje', 'Fuera del rango');
             } 
         }
-        
     }
 }

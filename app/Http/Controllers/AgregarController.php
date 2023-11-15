@@ -23,4 +23,9 @@ class AgregarController extends Controller
 
         return back();
     }
+
+    public function edit($id){
+        $user = User::find($id);
+        return view("Acciones.Adminstrador.Editar", compact("user"));
+    }
 }

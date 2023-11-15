@@ -16,6 +16,7 @@
         @if(session('success'))
             <p class="bg-green-500 text-white w-full my-2 rounded-sm text-sm p-2 text-center">{{ session('success') }}</p>
         @endif
+        @if (auth()->user()->email == "1428060@senati.pe")
         @if(isset($user))
             <div class="flex justify-between">
                 <p class="text-xl font-thin">Nombre: {{ $user->name }}</p>
@@ -25,6 +26,7 @@
             <a href="" class="bg-green-500 p-2 text-white w-1/2 text-center text-sm rounded-sm">Solicitudes de {{ $user->name }}</a>
         @else
             <p>Busca un usuario</p>
+        @endif
         @endif
         <input type="text" name="latitud" id="latitud" readonly placeholder="Aqui se mostrara latitud" class="border-2 border-green-600 rounded-sm p-2" {{ isset($user) ? 'value=' . $user->latitud : '' }}>
         <input type="text" name="longitud" id="longitud" readonly placeholder="Aqui se mostrara longitud" class="border-2 border-green-600 rounded-sm p-2" {{ isset($user) ? 'value=' . $user->longitud : '' }}>

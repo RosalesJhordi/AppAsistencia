@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rosales - @yield('titulo')</title>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -28,7 +29,7 @@
                     <i class="fa-solid fa-user-plus"></i>
                     Agregar
                 </div></a>
-                <a href=""><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
+                <a href="{{route('EditarHorario')}}"><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
                     <i class="fa-solid fa-calendar"></i>
                     Editar Horario
                 </div></a>
@@ -41,15 +42,11 @@
                     <i class="fa-solid fa-calendar"></i>
                     Marcar Asistencia
                 </div></a>
-                <a href=""><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    Asistencias
-                </div></a>
-                <a href=""><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
+                <a href="{{route('Horario')}}"><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
                     <i class="fa-regular fa-calendar-days"></i>
                     Horario
                 </div></a>
-                <a href=""><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
+                <a href="{{route('Solictud')}}"><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
                     <i class="fa-solid fa-list"></i>
                     Estado de Solicitud
                 </div></a>
@@ -81,7 +78,7 @@
                     Personal
                 </div>
             </a>
-            <a href="" class="hover:scale-105">
+            <a href="{{route('Observaciones')}}" class="hover:scale-105">
                 <div class="w-80 h-32 bg-orange-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
                     <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-red-600 flex justify-center items-center">
                         <i class="fa-solid fa-triangle-exclamation"></i>
@@ -89,7 +86,7 @@
                     En Observacion
                 </div>
             </a>
-            <a href="" class="hover:scale-105">
+            <a href="{{route('Soli.Admin')}}" class="hover:scale-105">
                 <div class="w-80 h-32 bg-blue-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
                     <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
                         <i class="fa-solid fa-rotate-right"></i>
@@ -98,7 +95,7 @@
                 </div>
             </a>
             @else
-            <a href="" class="hover:scale-105">
+            <a href="{{route('Solicitud.realizar')}}" class="hover:scale-105">
                 <div class="w-80 h-32 bg-blue-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
                     <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
                         <i class="fa-solid fa-rotate-right"></i>
