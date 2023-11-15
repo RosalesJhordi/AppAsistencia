@@ -20,10 +20,14 @@
         @if(isset($user))
             <div class="flex justify-between">
                 <p class="text-xl font-thin">Nombre: {{ $user->name }}</p>
-                <a href="" class="bg-green-600 p-1 px-5 rounded-sm text-white">Estado: Puntual</a>
+
+                @if ($user->horario->estado == "No Asistio")
+                    <a href="" class="bg-red-600 p-1 px-5 rounded-sm text-white">Estado: Inpuntual</a>
+                @else
+                    <a href="" class="bg-green-600 p-1 px-5 rounded-sm text-white">Estado: Puntual</a>
+                @endif
             </div>
-            <a href="" class="bg-blue-500 p-2 text-white w-1/2 text-center text-sm rounded-sm">Horario de {{ $user->name }}</a>
-            <a href="" class="bg-green-500 p-2 text-white w-1/2 text-center text-sm rounded-sm">Solicitudes de {{ $user->name }}</a>
+            <a href="{{route('Soli.Admin')}}" class="bg-green-500 p-2 text-white w-1/2 text-center text-sm rounded-sm">Solicitudes de {{ $user->name }}</a>
         @else
             <p>Busca un usuario</p>
         @endif

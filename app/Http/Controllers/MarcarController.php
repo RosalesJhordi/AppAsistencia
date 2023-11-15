@@ -29,6 +29,10 @@ class MarcarController extends Controller
                 ]);
                 return redirect()->route('Home')->with('success', 'Dentro del rango, Asistencia marcada');
             }else{
+                $asis = "No Asistio";
+                $hr->update([
+                    'estado' => $asis
+                ]);
                 return redirect()->route('Home')->with('mensaje', 'Fuera del rango');
             } 
         }

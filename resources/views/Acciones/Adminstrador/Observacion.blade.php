@@ -12,4 +12,11 @@ Observaciones
         <i class="fa-solid fa-x absolute right-1 top-1 p-2 px-2.5 text-red-600 cursor-pointer bg-white rounded-full" id="close_info"></i>
     </div>
 </div>
+<div class="px-5 w-full">
+    @foreach ($observacion as $us)
+        <div class="border p-2 w-80 mt-10 shadow-md">
+            <h1>{{$us->dia1}} {{$us->usuario->name}} {{$us->estado}}</h1>
+        </div>
+    @endforeach 
+</div>
 @endsection

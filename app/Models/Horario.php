@@ -19,6 +19,9 @@ class Horario extends Model
         'estado',
         'user_id'
     ];
-
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
     
 }
