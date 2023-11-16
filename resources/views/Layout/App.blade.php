@@ -7,6 +7,8 @@
     <title>Rosales - @yield('titulo')</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    @vite('resources/js/menu.js')
+    @vite('resources/css/media.css')
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -16,10 +18,12 @@
 
 </head>
 <body class="flex justify-between relative">
-    <aside style="width: 15%;" class="h-screen bg-gray-900 fixed"> 
-        <img src="{{asset('img/Logo-modified.png')}}" alt="Logo" class="py-5 w-80">
-        
-        <div class="flex flex-col text-white mt-20 gap-10 relative" style="height: 80vh;">
+    <aside class="h-screen bg-gray-900 fixed aside" id="aside"> 
+        <i class="fa-solid fa-x text-red-500 text-2xl float-right p-2" id="close-menu"></i>
+        <center>
+           <img src="{{asset('img/Logo-modified.png')}}" alt="Logo" class="py-5 w-80"> 
+        </center>
+        <div class="flex flex-col text-white mt-20 gap-10 relative opciones" style="height: 80vh;">
             @if (auth()->user()->email == "1428060@senati.pe")
                 <a href="{{ route('Home') }}"><div class="px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 flex justify-between items-center font-bold text-xl ops">
                     <i class="fa-solid fa-bars-progress"></i>
@@ -51,44 +55,48 @@
                     Estado de Solicitud
                 </div></a>
             @endif
-            <form action="{{ route('LogOut') }}" method="POST">
-                @csrf          
-                <div class="flex justify-between items-center absolute w-full bottom-0 px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 font-bold text-xl ops">
-                    <button type="submit" class="w-full flex justify-between items-center">
-                        <i class="fa-solid fa-power-off"></i>
-                        Cerrar sesión
-                    </button>
-                </div>
-            </form>
+                <a href="">
+                <form action="{{ route('LogOut') }}" method="POST">
+                    @csrf          
+                    <div id="logout" class="flex justify-between items-center absolute w-full bottom-0 px-5 p-2 border-l-8 cursor-pointer border-orange-600 hover:bg-orange-600 font-bold text-xl ops">
+                        <button type="submit" class="w-full flex justify-between items-center">
+                            <i class="fa-solid fa-power-off"></i>
+                            Cerrar sesión
+                        </button>
+                    </div>
+                </form></a>
         </div>
     </aside>
-    <main style="width: 85%;" class="absolute right-0">
+    <main class="absolute right-0 main">
         <h1 class="px-5 py-5 text-xl font-medium flex justify-between">
-            @yield('titulo')
+            <span class="flex justify-center items-center gap-5">
+                <i class="fa-solid fa-bars" id="menu"></i>
+                @yield('titulo')   
+            </span>
             <span>Hola: {{ auth()->user()->name }}</span>
         </h1>
         
-        <div class="w-full h-auto flex gap-5 my-5 px-5 pb-5 border-b-2 border-gray-200">
+        <div class="w-full h-auto flex gap-5 my-5 px-5 pb-5 border-b-2 border-gray-200 conte-dash">
             @if (auth()->user()->email == "1428060@senati.pe")
             <a href="{{route('Personal')}}" class="hover:scale-105">
-                <div class="w-80 h-32 bg-green-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
-                    <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
+                <div class="w-80 dash h-32 bg-green-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
+                    <div class="i p-2 text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
                     Personal
                 </div>
             </a>
             <a href="{{route('Observaciones')}}" class="hover:scale-105">
-                <div class="w-80 h-32 bg-orange-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
-                    <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-red-600 flex justify-center items-center">
+                <div class="dash w-80 h-32 bg-orange-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
+                    <div class="p-2 i text-4xl rounded-full w-16 h-16 bg-white text-red-600 flex justify-center items-center">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                     </div>
                     En Observacion
                 </div>
             </a>
             <a href="{{route('Soli.Admin')}}" class="hover:scale-105">
-                <div class="w-80 h-32 bg-blue-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
-                    <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
+                <div class=" dash w-80 h-32 bg-blue-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
+                    <div class="p-2 i text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
                         <i class="fa-solid fa-rotate-right"></i>
                     </div>
                     Solicitud de Cambios
@@ -96,8 +104,8 @@
             </a>
             @else
             <a href="{{route('Solicitud.realizar')}}" class="hover:scale-105">
-                <div class="w-80 h-32 bg-blue-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
-                    <div class="p-2 text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
+                <div class="w-80 dash h-32 bg-blue-600 flex rounded-md justify-center items-center gap-5 font-bold text-xl text-white">
+                    <div class="p-2 i text-4xl rounded-full w-16 h-16 bg-white text-black flex justify-center items-center">
                         <i class="fa-solid fa-rotate-right"></i>
                     </div>
                     Realizar Solicitud

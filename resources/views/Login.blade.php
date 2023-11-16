@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rosales - Login</title>
     @vite('resources/css/app.css')
-    @vite('resources/css/animations.css')
+    @vite('resources/css/media.css')
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
 </head>
 <body class="w-full h-screen flex justify-center items-center relative" style="background-repeat: no-repeat; background-position: center; background-size: cover; background-image: url({{asset('img/Fondo.jpg')}});">

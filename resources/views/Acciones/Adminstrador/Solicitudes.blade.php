@@ -5,9 +5,9 @@ Solicitudes
 @endsection
 
 @section('contenido')
-<div class="w-full px-10 flex gap-10 flex-wrap">
+<div class="w-full px-5 flex gap-10 flex-wrap conte-soli">
     @foreach ($solicitud as $soli)
-        <div class="w-80 flex justify-center flex-col border p-5">
+        <div class="w-80 flex justify-center flex-col soli border p-5">
             <h1>Nombre: {{ $soli->usuario->name }}</h1>
             <h1 class="font-semibold p-1 flex justify-between">{{ $soli->tipo }} <span class="text-green-500 font-medium">{{ $soli->created_at->diffForHumans() }}</span> </h1>
             <p class="p-1 flex-wrap">{{ $soli->motivo }}</p>

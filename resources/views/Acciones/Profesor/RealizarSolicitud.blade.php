@@ -5,8 +5,8 @@ Solicitud
 @endsection
 
 @section('contenido')
-<div class="flex w-full justify-center items-center">
-    <form action="{{route('Solicitud.post')}}" method="POST" class="w-1/3 h-1/2 border shadow-md flex justify-center flex-col p-2 items-center">
+<div class="flex w-full justify-center items-center realizar">
+    <form action="{{route('Solicitud.post')}}" method="POST" class="w-1/3 realizar-form h-1/2 border shadow-md flex justify-center flex-col p-2 items-center">
         @csrf
         @if(session('success'))
             <p class="bg-green-500 text-white w-full my-2 rounded-sm text-sm p-2 text-center">{{ session('success') }}</p>

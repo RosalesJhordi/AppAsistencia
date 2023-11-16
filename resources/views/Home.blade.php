@@ -6,8 +6,8 @@
 @endsection
 
 @section('contenido')
-<div class="w-full flex justify-center items-center gap-5" style="height: 70vh;">
-    <div id="map" class="w-1/2" style="height: 70vh;"></div>
+<div class="w-full flex justify-center items-center gap-5 div-mapa" style="height: 70vh;">
+    <div id="map" class="w-1/2"></div>
     <form action="{{route('Marcar')}}" method="POST" class="w-96 p-2 flex flex-col gap-2">
         @csrf
         @if(session('mensaje'))
